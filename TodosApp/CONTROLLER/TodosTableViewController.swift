@@ -16,7 +16,7 @@ class TodosTableViewController: UITableViewController {
         super.viewDidLoad()
         self.title = "List All - CoreData"
         view.backgroundColor = .white
-        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        self.tableView.register(TodoCell.self, forCellReuseIdentifier: "Cell2")
         
         
        updateTableContent()
@@ -24,10 +24,10 @@ class TodosTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell2", for: indexPath) as! TodoCell
         if let todo = fetchedhResultController.object(at: indexPath) as? Todo {
-            cell.textLabel?.text = "Todo Number: \(todo.title )"
-            cell.detailTextLabel?.text = "Title: \(todo.title ?? "Title Missing")"
+            cell.todoId?.text = "Todo Number: \(todo.id )"
+            cell.todoTitle?.text = "Title: \(todo.title ?? "Title Missing")"
 //            cell.detailTextLabel?.text = "Completed: \(todo.completed)"
 
         }
