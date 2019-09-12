@@ -18,22 +18,70 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="6Uf-ub-nb6" style="IBUITableViewCellStyleDefault" id="OcF-wk-Oqj">
-                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="6Uf-ub-nb6" detailTextLabel="e3W-Up-WB5" rowHeight="120" style="IBUITableViewCellStyleSubtitle" id="OcF-wk-Oqj">
+                                <rect key="frame" x="0.0" y="28" width="414" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OcF-wk-Oqj" id="zSy-zf-KXn">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="119.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6Uf-ub-nb6">
-                                            <rect key="frame" x="20" y="0.0" width="374" height="43.5"/>
+                                            <rect key="frame" x="20" y="40" width="33.5" height="20.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="e3W-Up-WB5">
+                                            <rect key="frame" x="20" y="63.5" width="44" height="14.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell2" rowHeight="173" id="OB2-Zp-oMS" customClass="TodoCell" customModule="TodosApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="148" width="414" height="173"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OB2-Zp-oMS" id="q8w-Ml-kwX">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="172.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Todo Id: 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cgx-z3-41I">
+                                            <rect key="frame" x="20" y="11" width="74" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title: Today's todo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eAU-8R-Y0T">
+                                            <rect key="frame" x="20" y="32" width="140" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Completed: Yes / No" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xAL-zb-GUk">
+                                            <rect key="frame" x="20" y="53" width="157" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="eAU-8R-Y0T" firstAttribute="top" secondItem="Cgx-z3-41I" secondAttribute="bottom" id="1pk-8t-GC5"/>
+                                        <constraint firstItem="xAL-zb-GUk" firstAttribute="leading" secondItem="q8w-Ml-kwX" secondAttribute="leadingMargin" id="EAa-2P-3SO"/>
+                                        <constraint firstItem="eAU-8R-Y0T" firstAttribute="leading" secondItem="q8w-Ml-kwX" secondAttribute="leadingMargin" id="Jhg-2V-ff0"/>
+                                        <constraint firstItem="xAL-zb-GUk" firstAttribute="top" secondItem="eAU-8R-Y0T" secondAttribute="bottom" id="K64-Hy-UOK"/>
+                                        <constraint firstItem="Cgx-z3-41I" firstAttribute="leading" secondItem="q8w-Ml-kwX" secondAttribute="leadingMargin" id="gQ3-QJ-gHN"/>
+                                        <constraint firstItem="Cgx-z3-41I" firstAttribute="top" secondItem="q8w-Ml-kwX" secondAttribute="topMargin" id="x2J-E6-CmT"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="todoId" destination="Cgx-z3-41I" id="Ase-0c-z9v"/>
+                                    <outlet property="todoStatus" destination="xAL-zb-GUk" id="O7j-0j-Yvy"/>
+                                    <outlet property="todoTitle" destination="eAU-8R-Y0T" id="Tgl-WS-Q3Q"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

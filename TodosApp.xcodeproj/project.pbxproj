@@ -15,6 +15,9 @@
 		517A34D8232921E200F357A0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 517A34D6232921E200F357A0 /* LaunchScreen.storyboard */; };
 		517A34E0232925E400F357A0 /* API_manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517A34DF232925E400F357A0 /* API_manager.swift */; };
 		517A34E8232A244600F357A0 /* TodosTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517A34E7232A244600F357A0 /* TodosTableViewController.swift */; };
+		517A34EE232A3A3000F357A0 /* Todo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517A34EC232A3A3000F357A0 /* Todo+CoreDataClass.swift */; };
+		517A34EF232A3A3000F357A0 /* Todo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517A34ED232A3A3000F357A0 /* Todo+CoreDataProperties.swift */; };
+		517A34F2232A49BB00F357A0 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517A34F1232A49BB00F357A0 /* CoreDataStack.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +31,9 @@
 		517A34D9232921E200F357A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		517A34DF232925E400F357A0 /* API_manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API_manager.swift; sourceTree = "<group>"; };
 		517A34E7232A244600F357A0 /* TodosTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosTableViewController.swift; sourceTree = "<group>"; };
+		517A34EC232A3A3000F357A0 /* Todo+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Todo+CoreDataClass.swift"; sourceTree = "<group>"; };
+		517A34ED232A3A3000F357A0 /* Todo+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Todo+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		517A34F1232A49BB00F357A0 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,8 +66,9 @@
 		517A34C9232921E100F357A0 /* TodosApp */ = {
 			isa = PBXGroup;
 			children = (
+				517A34F0232A3A7000F357A0 /* MODEL */,
 				517A34E6232A240200F357A0 /* CONTROLLER */,
-				517A34E5232A1E5000F357A0 /* API */,
+				517A34E5232A1E5000F357A0 /* API_manager */,
 				517A34CA232921E100F357A0 /* AppDelegate.swift */,
 				517A34CC232921E100F357A0 /* ViewController.swift */,
 				517A34CE232921E100F357A0 /* Main.storyboard */,
@@ -73,12 +80,12 @@
 			path = TodosApp;
 			sourceTree = "<group>";
 		};
-		517A34E5232A1E5000F357A0 /* API */ = {
+		517A34E5232A1E5000F357A0 /* API_manager */ = {
 			isa = PBXGroup;
 			children = (
 				517A34DF232925E400F357A0 /* API_manager.swift */,
 			);
-			path = API;
+			path = API_manager;
 			sourceTree = "<group>";
 		};
 		517A34E6232A240200F357A0 /* CONTROLLER */ = {
@@ -87,6 +94,16 @@
 				517A34E7232A244600F357A0 /* TodosTableViewController.swift */,
 			);
 			path = CONTROLLER;
+			sourceTree = "<group>";
+		};
+		517A34F0232A3A7000F357A0 /* MODEL */ = {
+			isa = PBXGroup;
+			children = (
+				517A34EC232A3A3000F357A0 /* Todo+CoreDataClass.swift */,
+				517A34ED232A3A3000F357A0 /* Todo+CoreDataProperties.swift */,
+				517A34F1232A49BB00F357A0 /* CoreDataStack.swift */,
+			);
+			path = MODEL;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -163,8 +180,11 @@
 				517A34CD232921E100F357A0 /* ViewController.swift in Sources */,
 				517A34CB232921E100F357A0 /* AppDelegate.swift in Sources */,
 				517A34E0232925E400F357A0 /* API_manager.swift in Sources */,
+				517A34EF232A3A3000F357A0 /* Todo+CoreDataProperties.swift in Sources */,
 				517A34E8232A244600F357A0 /* TodosTableViewController.swift in Sources */,
 				517A34D3232921E100F357A0 /* TodosApp.xcdatamodeld in Sources */,
+				517A34EE232A3A3000F357A0 /* Todo+CoreDataClass.swift in Sources */,
+				517A34F2232A49BB00F357A0 /* CoreDataStack.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
