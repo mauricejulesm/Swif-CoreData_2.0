@@ -18,26 +18,26 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell2" rowHeight="111" id="OB2-Zp-oMS" customClass="TodoCell" customModule="TodosApp">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell2" rowHeight="111" id="4TQ-ke-dww" customClass="TodoCell" customModule="TodosApp" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="111"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OB2-Zp-oMS" id="q8w-Ml-kwX">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4TQ-ke-dww" id="2iD-4u-z27">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="110.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Todo Id: 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cgx-z3-41I">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Todo Id: 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cYR-gh-Tlc">
                                             <rect key="frame" x="20" y="11" width="74" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title: Today's todo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eAU-8R-Y0T">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title: Today's todo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FnI-MK-xvT">
                                             <rect key="frame" x="20" y="32" width="140" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Completed: Yes / No" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xAL-zb-GUk">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Completed: Yes / No" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zpo-4A-GGv">
                                             <rect key="frame" x="20" y="53" width="157" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -45,18 +45,18 @@
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="eAU-8R-Y0T" firstAttribute="top" secondItem="Cgx-z3-41I" secondAttribute="bottom" id="1pk-8t-GC5"/>
-                                        <constraint firstItem="xAL-zb-GUk" firstAttribute="leading" secondItem="q8w-Ml-kwX" secondAttribute="leadingMargin" id="EAa-2P-3SO"/>
-                                        <constraint firstItem="eAU-8R-Y0T" firstAttribute="leading" secondItem="q8w-Ml-kwX" secondAttribute="leadingMargin" id="Jhg-2V-ff0"/>
-                                        <constraint firstItem="xAL-zb-GUk" firstAttribute="top" secondItem="eAU-8R-Y0T" secondAttribute="bottom" id="K64-Hy-UOK"/>
-                                        <constraint firstItem="Cgx-z3-41I" firstAttribute="leading" secondItem="q8w-Ml-kwX" secondAttribute="leadingMargin" id="gQ3-QJ-gHN"/>
-                                        <constraint firstItem="Cgx-z3-41I" firstAttribute="top" secondItem="q8w-Ml-kwX" secondAttribute="topMargin" id="x2J-E6-CmT"/>
+                                        <constraint firstItem="cYR-gh-Tlc" firstAttribute="top" secondItem="2iD-4u-z27" secondAttribute="topMargin" id="601-0y-8SP"/>
+                                        <constraint firstItem="FnI-MK-xvT" firstAttribute="leading" secondItem="2iD-4u-z27" secondAttribute="leadingMargin" id="KKn-LL-FCp"/>
+                                        <constraint firstItem="cYR-gh-Tlc" firstAttribute="leading" secondItem="2iD-4u-z27" secondAttribute="leadingMargin" id="OMU-6P-3Tb"/>
+                                        <constraint firstItem="Zpo-4A-GGv" firstAttribute="top" secondItem="FnI-MK-xvT" secondAttribute="bottom" id="OdB-O8-hT8"/>
+                                        <constraint firstItem="Zpo-4A-GGv" firstAttribute="leading" secondItem="2iD-4u-z27" secondAttribute="leadingMargin" id="YRA-Vo-bgo"/>
+                                        <constraint firstItem="FnI-MK-xvT" firstAttribute="top" secondItem="cYR-gh-Tlc" secondAttribute="bottom" id="YTD-qm-x2G"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="todoId" destination="Cgx-z3-41I" id="Ase-0c-z9v"/>
-                                    <outlet property="todoStatus" destination="xAL-zb-GUk" id="O7j-0j-Yvy"/>
-                                    <outlet property="todoTitle" destination="eAU-8R-Y0T" id="Tgl-WS-Q3Q"/>
+                                    <outlet property="todoId" destination="cYR-gh-Tlc" id="DAL-ZV-g5z"/>
+                                    <outlet property="todoStatus" destination="Zpo-4A-GGv" id="bdl-de-ePO"/>
+                                    <outlet property="todoTitle" destination="FnI-MK-xvT" id="d2N-d6-jde"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -70,6 +70,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VGL-lb-PJe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1731.8840579710147" y="109.82142857142857"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="fAV-Du-iFV">
+            <objects>
+                <tableViewController id="maG-s7-MM0" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="JsQ-Wb-vLc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <connections>
+                            <outlet property="dataSource" destination="maG-s7-MM0" id="LEq-lF-GgU"/>
+                            <outlet property="delegate" destination="maG-s7-MM0" id="wt0-iQ-OT4"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="66y-yj-HyF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3448" y="127"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="1rR-Vh-4by">

@@ -9,13 +9,28 @@
 import UIKit
 import CoreData
 
-class TodosTableViewController: UITableViewController {
+class TodosTableViewController: UITableViewController{
 
+    //refresh control
+//        let refreshControl = UIRefreshControl()
+//        refreshControl.addTarget(self, action: #selector(ViewController.handleRefresh(_:)), for: UIControlEvents.valueChanged)
+//        refreshControl.tintColor = UIColor.red
+//
+//        return refreshControl
+//    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "List All - CoreData"
         view.backgroundColor = .white
+        let refreshCo = UIRefreshControl()
+
+        
+        refreshCo.attributedTitle = NSAttributedString(string: "Pull to refresh todos")
+        refreshCo.addTarget(self, action: #selector(refreshTable), for: .valueChanged)
+        self.tableView.addSubview(refreshCo)
+        
+        self.refreshControl = refreshCo
         self.tableView.register(TodoCell.self, forCellReuseIdentifier: "Cell2")
         
         
@@ -26,9 +41,9 @@ class TodosTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell2", for: indexPath) as! TodoCell
         if let todo = fetchedhResultController.object(at: indexPath) as? Todo {
-            cell.todoId?.text = "Todo Number: \(todo.id )"
-            cell.todoTitle?.text = "Title: \(todo.title ?? "Title Missing")"
-//            cell.detailTextLabel?.text = "Completed: \(todo.completed)"
+            cell.textLabel?.text = "Todo Number: \(todo.id )"
+//            cell.textLabel?.text = "Title: \(todo.title ?? "Title Missing")"
+            cell.detailTextLabel?.text = "Completed: \(todo.completed)"
 
         }
         return cell
@@ -41,11 +56,36 @@ class TodosTableViewController: UITableViewController {
         return 0
     }
     
+    
+    // delete option
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        // functionality to delete a row
+        let context = CoreDataStack.sharedInstance.persistentContainer.viewContext
+        let todo = (fetchedhResultController.object(at: indexPath) as? Todo)!
+
+        if editingStyle == .delete {
+            context.delete(todo)
+            tableView.reloadData()
+            
+        }
+    }
+    // refresh table
+    @objc func refreshTable() {
+        updateTableContent()
+        
+        // stop the refresh after refreshing
+        refreshControl?.endRefreshing()
+    }
+    
     // managing the updates in the table
     func updateTableContent() {
         do {
             try self.fetchedhResultController.performFetch()
-            print("COUNT FETCHED FIRST: \(self.fetchedhResultController.sections?[0].numberOfObjects)")
+            print("COUNT FETCHED FIRST: \(self.fetchedhResultController.sections?[0].numberOfObjects ?? 0)")
         } catch let error  {
             print("ERROR: \(error)")
         }
@@ -61,6 +101,8 @@ class TodosTableViewController: UITableViewController {
                 }
             }
         }
+//        // stop the refresh after refreshing
+//        refreshControl?.endRefreshing()
     }
     
     // method to display the alert to the user
