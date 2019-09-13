@@ -18,46 +18,29 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell2" rowHeight="111" id="4TQ-ke-dww" customClass="TodoCell" customModule="TodosApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="111"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="U6J-WN-dMs" detailTextLabel="vg4-wF-jLs" rowHeight="124" style="IBUITableViewCellStyleSubtitle" id="4TQ-ke-dww" customClass="TodoCell" customModule="TodosApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="124"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4TQ-ke-dww" id="2iD-4u-z27">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="110.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="123.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Todo Id: 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cYR-gh-Tlc">
-                                            <rect key="frame" x="20" y="11" width="74" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="U6J-WN-dMs">
+                                            <rect key="frame" x="20" y="33" width="44" height="26.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title: Today's todo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FnI-MK-xvT">
-                                            <rect key="frame" x="20" y="32" width="140" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Completed: Yes / No" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zpo-4A-GGv">
-                                            <rect key="frame" x="20" y="53" width="157" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vg4-wF-jLs">
+                                            <rect key="frame" x="20" y="63.5" width="67" height="24"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
-                                    <constraints>
-                                        <constraint firstItem="cYR-gh-Tlc" firstAttribute="top" secondItem="2iD-4u-z27" secondAttribute="topMargin" id="601-0y-8SP"/>
-                                        <constraint firstItem="FnI-MK-xvT" firstAttribute="leading" secondItem="2iD-4u-z27" secondAttribute="leadingMargin" id="KKn-LL-FCp"/>
-                                        <constraint firstItem="cYR-gh-Tlc" firstAttribute="leading" secondItem="2iD-4u-z27" secondAttribute="leadingMargin" id="OMU-6P-3Tb"/>
-                                        <constraint firstItem="Zpo-4A-GGv" firstAttribute="top" secondItem="FnI-MK-xvT" secondAttribute="bottom" id="OdB-O8-hT8"/>
-                                        <constraint firstItem="Zpo-4A-GGv" firstAttribute="leading" secondItem="2iD-4u-z27" secondAttribute="leadingMargin" id="YRA-Vo-bgo"/>
-                                        <constraint firstItem="FnI-MK-xvT" firstAttribute="top" secondItem="cYR-gh-Tlc" secondAttribute="bottom" id="YTD-qm-x2G"/>
-                                    </constraints>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="todoId" destination="cYR-gh-Tlc" id="DAL-ZV-g5z"/>
-                                    <outlet property="todoStatus" destination="Zpo-4A-GGv" id="bdl-de-ePO"/>
-                                    <outlet property="todoTitle" destination="FnI-MK-xvT" id="d2N-d6-jde"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

@@ -24,7 +24,7 @@ class TodosTableViewController: UITableViewController{
         self.tableView.addSubview(todoRefreshControl)
         
         self.refreshControl = todoRefreshControl
-        self.tableView.register(TodoCell.self, forCellReuseIdentifier: "Cell2")
+//        self.tableView.register(TodoCell.self, forCellReuseIdentifier: "Cell2")
         
         
        updateTableContent()
@@ -32,11 +32,10 @@ class TodosTableViewController: UITableViewController{
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell2", for: indexPath) as! TodoCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         if let todo = fetchedhResultController.object(at: indexPath) as? Todo {
-            cell.textLabel?.text = "Todo Number: \(todo.id )"
-//            cell.textLabel?.text = "Title: \(todo.title ?? "Title Missing")"
-            cell.detailTextLabel?.text = "Completed: \(todo.completed)"
+            cell.textLabel?.text = "\(todo.id ). \(todo.title ?? "Title Missing")"
+            cell.detailTextLabel?.text = "Status: \(todo.completed ? "Completed":"Not Completed")"
 
         }
         return cell
