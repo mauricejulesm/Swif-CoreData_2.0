@@ -11,26 +11,19 @@ import CoreData
 
 class TodosTableViewController: UITableViewController{
 
-    //refresh control
-//        let refreshControl = UIRefreshControl()
-//        refreshControl.addTarget(self, action: #selector(ViewController.handleRefresh(_:)), for: UIControlEvents.valueChanged)
-//        refreshControl.tintColor = UIColor.red
-//
-//        return refreshControl
-//    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "List All - CoreData"
         view.backgroundColor = .white
-        let refreshCo = UIRefreshControl()
+        let todoRefreshControl = UIRefreshControl()
 
         
-        refreshCo.attributedTitle = NSAttributedString(string: "Pull to refresh todos")
-        refreshCo.addTarget(self, action: #selector(refreshTable), for: .valueChanged)
-        self.tableView.addSubview(refreshCo)
+        todoRefreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh todos")
+        todoRefreshControl.addTarget(self, action: #selector(updateTableContent), for: .valueChanged)
+        self.tableView.addSubview(todoRefreshControl)
         
-        self.refreshControl = refreshCo
+        self.refreshControl = todoRefreshControl
         self.tableView.register(TodoCell.self, forCellReuseIdentifier: "Cell2")
         
         
@@ -73,16 +66,9 @@ class TodosTableViewController: UITableViewController{
             
         }
     }
-    // refresh table
-    @objc func refreshTable() {
-        updateTableContent()
-        
-        // stop the refresh after refreshing
-        refreshControl?.endRefreshing()
-    }
     
     // managing the updates in the table
-    func updateTableContent() {
+    @objc  func updateTableContent() {
         do {
             try self.fetchedhResultController.performFetch()
             print("COUNT FETCHED FIRST: \(self.fetchedhResultController.sections?[0].numberOfObjects ?? 0)")
@@ -91,18 +77,20 @@ class TodosTableViewController: UITableViewController{
         }
         let service = API_manager()
         service.getDataWith { (result) in
+            
             switch result {
             case .Success(let data):
                 self.clearData()
                 self.saveInCoreDataWith(array: data)
+                
+                // stop the refresh after refreshing
+                self.refreshControl?.endRefreshing()
             case .Error(let message):
                 DispatchQueue.main.async {
                     self.displayAlert(title: "Error", message: message)
                 }
             }
         }
-//        // stop the refresh after refreshing
-//        refreshControl?.endRefreshing()
     }
     
     // method to display the alert to the user
