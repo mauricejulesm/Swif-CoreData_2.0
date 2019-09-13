@@ -15,20 +15,17 @@ class TodosTableViewController: UITableViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "List All - CoreData"
-        view.backgroundColor = .white
-        let todoRefreshControl = UIRefreshControl()
-
         
+        let todoRefreshControl = UIRefreshControl()
         todoRefreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh todos")
         todoRefreshControl.addTarget(self, action: #selector(updateTableContent), for: .valueChanged)
         self.tableView.addSubview(todoRefreshControl)
         
         self.refreshControl = todoRefreshControl
-//        self.tableView.register(TodoCell.self, forCellReuseIdentifier: "Cell2")
+        //self.tableView.register(TodoCell.self, forCellReuseIdentifier: "Cell2")
         
-        
+        // update the table on load
        updateTableContent()
-        
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -36,7 +33,6 @@ class TodosTableViewController: UITableViewController{
         if let todo = fetchedhResultController.object(at: indexPath) as? Todo {
             cell.textLabel?.text = "\(todo.id ). \(todo.title ?? "Title Missing")"
             cell.detailTextLabel?.text = "Status: \(todo.completed ? "Completed":"Not Completed")"
-
         }
         return cell
     }
@@ -49,7 +45,7 @@ class TodosTableViewController: UITableViewController{
     }
     
     
-    // delete option
+    // allow delete option
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
@@ -59,6 +55,7 @@ class TodosTableViewController: UITableViewController{
         let context = CoreDataStack.sharedInstance.persistentContainer.viewContext
         let todo = (fetchedhResultController.object(at: indexPath) as? Todo)!
 
+        // check if the user has started the editting mode
         if editingStyle == .delete {
             context.delete(todo)
             tableView.reloadData()
