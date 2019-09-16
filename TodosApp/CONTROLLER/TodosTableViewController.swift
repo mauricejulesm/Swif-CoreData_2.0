@@ -16,6 +16,7 @@ class TodosTableViewController: UITableViewController{
         super.viewDidLoad()
         self.title = "List All - CoreData"
         
+        // Pull-to-refresh options
         let todoRefreshControl = UIRefreshControl()
         todoRefreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh todos")
         todoRefreshControl.addTarget(self, action: #selector(updateTableContent), for: .valueChanged)
@@ -101,7 +102,6 @@ class TodosTableViewController: UITableViewController{
         self.present(alertController, animated: true, completion: nil)
         
     }
-    
     // helper method to help creating todos entities
     private func createTodoEntityFrom(dictionary: [String: AnyObject]) -> NSManagedObject? {
         let context = CoreDataStack.sharedInstance.persistentContainer.viewContext
@@ -109,7 +109,6 @@ class TodosTableViewController: UITableViewController{
             todoEntity.id = dictionary["id"] as? Int64 ?? 111
             todoEntity.title = dictionary["title"] as? String
             todoEntity.completed = dictionary["completed"] as? Bool ?? false
-
             return todoEntity
         }
         return nil
@@ -126,7 +125,7 @@ class TodosTableViewController: UITableViewController{
         }
     }
     
-    
+    // computed property to controll the fetched results from core data
     lazy var fetchedhResultController: NSFetchedResultsController<NSFetchRequestResult> = {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: String(describing: Todo.self))
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "id", ascending: true)]
@@ -138,7 +137,6 @@ class TodosTableViewController: UITableViewController{
     // clearing the previously saved data to avoid duplicates
     private func clearData() {
         do {
-            
             let context = CoreDataStack.sharedInstance.persistentContainer.viewContext
             let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: String(describing: Todo.self))
             do {
@@ -150,14 +148,6 @@ class TodosTableViewController: UITableViewController{
             }
         }
     }
-}
-
-class TodoCell: UITableViewCell {
-    
-    @IBOutlet weak var todoId: UILabel!
-    @IBOutlet weak var todoTitle: UILabel!
-    @IBOutlet weak var todoStatus: UILabel!
-    
 }
 
 extension TodosTableViewController: NSFetchedResultsControllerDelegate {

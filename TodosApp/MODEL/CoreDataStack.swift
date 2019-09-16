@@ -35,7 +35,7 @@ class CoreDataStack: NSObject {
                 try context.save()
             } catch {
                 let nserror = error as NSError
-                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+                fatalError("Error while saving the persistent context \(nserror), \(nserror.userInfo)")
             }
         }
     }

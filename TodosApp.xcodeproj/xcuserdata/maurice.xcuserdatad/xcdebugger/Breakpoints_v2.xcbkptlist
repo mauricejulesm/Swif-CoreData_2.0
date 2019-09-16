@@ -138,7 +138,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TodosApp/CONTROLLER/TodosTableViewController.swift"
-            timestampString = "590065832.775655"
+            timestampString = "590305959.687192"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "33"
@@ -154,7 +154,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TodosApp/CONTROLLER/TodosTableViewController.swift"
-            timestampString = "590065832.776127"
+            timestampString = "590305959.6872441"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "59"
@@ -170,13 +170,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TodosApp/CONTROLLER/TodosTableViewController.swift"
-            timestampString = "590065832.776403"
+            timestampString = "590305959.687282"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "67"
             endingLineNumber = "67"
-            landmarkName = "updateTableContent()"
-            landmarkType = "7">
+            landmarkName = "TodosTableViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		517A34CB232921E100F357A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517A34CA232921E100F357A0 /* AppDelegate.swift */; };
-		517A34CD232921E100F357A0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517A34CC232921E100F357A0 /* ViewController.swift */; };
 		517A34D0232921E100F357A0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 517A34CE232921E100F357A0 /* Main.storyboard */; };
 		517A34D3232921E100F357A0 /* TodosApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 517A34D1232921E100F357A0 /* TodosApp.xcdatamodeld */; };
 		517A34D5232921E200F357A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 517A34D4232921E200F357A0 /* Assets.xcassets */; };
@@ -23,7 +22,6 @@
 /* Begin PBXFileReference section */
 		517A34C7232921E100F357A0 /* TodosApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodosApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		517A34CA232921E100F357A0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		517A34CC232921E100F357A0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		517A34CF232921E100F357A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		517A34D2232921E100F357A0 /* TodosApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TodosApp.xcdatamodel; sourceTree = "<group>"; };
 		517A34D4232921E200F357A0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -47,6 +45,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		515064D1232F58370084E81B /* TOOLS */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TOOLS;
+			sourceTree = "<group>";
+		};
 		517A34BE232921E100F357A0 = {
 			isa = PBXGroup;
 			children = (
@@ -66,13 +71,13 @@
 		517A34C9232921E100F357A0 /* TodosApp */ = {
 			isa = PBXGroup;
 			children = (
+				515064D1232F58370084E81B /* TOOLS */,
 				517A34F0232A3A7000F357A0 /* MODEL */,
 				517A34E6232A240200F357A0 /* CONTROLLER */,
-				517A34E5232A1E5000F357A0 /* API_manager */,
+				517A34E5232A1E5000F357A0 /* API_MANAGER */,
 				517A34CA232921E100F357A0 /* AppDelegate.swift */,
-				517A34CC232921E100F357A0 /* ViewController.swift */,
-				517A34CE232921E100F357A0 /* Main.storyboard */,
 				517A34D4232921E200F357A0 /* Assets.xcassets */,
+				517A34CE232921E100F357A0 /* Main.storyboard */,
 				517A34D6232921E200F357A0 /* LaunchScreen.storyboard */,
 				517A34D9232921E200F357A0 /* Info.plist */,
 				517A34D1232921E100F357A0 /* TodosApp.xcdatamodeld */,
@@ -80,12 +85,12 @@
 			path = TodosApp;
 			sourceTree = "<group>";
 		};
-		517A34E5232A1E5000F357A0 /* API_manager */ = {
+		517A34E5232A1E5000F357A0 /* API_MANAGER */ = {
 			isa = PBXGroup;
 			children = (
 				517A34DF232925E400F357A0 /* API_manager.swift */,
 			);
-			path = API_manager;
+			path = API_MANAGER;
 			sourceTree = "<group>";
 		};
 		517A34E6232A240200F357A0 /* CONTROLLER */ = {
@@ -177,7 +182,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				517A34CD232921E100F357A0 /* ViewController.swift in Sources */,
 				517A34CB232921E100F357A0 /* AppDelegate.swift in Sources */,
 				517A34E0232925E400F357A0 /* API_manager.swift in Sources */,
 				517A34EF232A3A3000F357A0 /* Todo+CoreDataProperties.swift in Sources */,
