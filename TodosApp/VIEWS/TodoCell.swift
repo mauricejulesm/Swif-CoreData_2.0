@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TodoCustomCell: UITableViewCell {
+class TodoCell: UITableViewCell {
     @IBOutlet weak var todoImage: UIImageView!
     @IBOutlet weak var idLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
@@ -27,9 +27,9 @@ class TodoCustomCell: UITableViewCell {
         print("changed status")
     }
     
-    func commonInit(_ imageName:String, id:String, title:String){
+    func commonInit(_ imageName:String, id:Int64, title:String){
         todoImage.image = UIImage(named: imageName)
-        idLabel.text = id
+        idLabel.text = String(id)
         titleLabel.text = title
     }
     

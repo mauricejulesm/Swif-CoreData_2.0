@@ -46,13 +46,14 @@ class TodosTableViewController: UITableViewController{
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TodoCell", for: indexPath) as! TodoCell
         guard let todo = viewModel.itemAtIndex(indexPath) else {
             return UITableViewCell()
         }
         
-        cell.textLabel?.text = "\(todo.id ). \(todo.title ?? "Title Missing")"
-        cell.detailTextLabel?.text = "Status: \(todo.completed ? "Completed":"Not Completed")"
+        cell.commonInit("todo-image", id: todo.id, title: todo.title!)
+//        cell.textLabel?.text = "\(todo.id ). \(todo.title ?? "Title Missing")"
+//        cell.detailTextLabel?.text = "Status: \(todo.completed ? "Completed":"Not Completed")"
         return cell
     }
     
