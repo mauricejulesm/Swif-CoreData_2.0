@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		415B475BA2BCED62D0BCE021 /* Pods_TodosApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 548709E6F15B62FC63D131DE /* Pods_TodosApp.framework */; };
 		511A05E02330B040000BD3ED /* TodoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 511A05DF2330B040000BD3ED /* TodoViewModel.swift */; };
+		5164F2502330F5DA00D24A7C /* TodoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5164F24E2330F5DA00D24A7C /* TodoCell.swift */; };
+		5164F2512330F5DA00D24A7C /* TodoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5164F24F2330F5DA00D24A7C /* TodoCell.xib */; };
 		517A34CB232921E100F357A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517A34CA232921E100F357A0 /* AppDelegate.swift */; };
 		517A34D0232921E100F357A0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 517A34CE232921E100F357A0 /* Main.storyboard */; };
 		517A34D3232921E100F357A0 /* TodosApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 517A34D1232921E100F357A0 /* TodosApp.xcdatamodeld */; };
@@ -23,6 +25,8 @@
 
 /* Begin PBXFileReference section */
 		511A05DF2330B040000BD3ED /* TodoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoViewModel.swift; sourceTree = "<group>"; };
+		5164F24E2330F5DA00D24A7C /* TodoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoCell.swift; sourceTree = "<group>"; };
+		5164F24F2330F5DA00D24A7C /* TodoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TodoCell.xib; sourceTree = "<group>"; };
 		517A34C7232921E100F357A0 /* TodosApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodosApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		517A34CA232921E100F357A0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		517A34CF232921E100F357A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -69,11 +73,14 @@
 			path = VIEWMODEL;
 			sourceTree = "<group>";
 		};
-		515064D1232F58370084E81B /* TOOLS */ = {
+		511A05E12330E931000BD3ED /* VIEWS */ = {
 			isa = PBXGroup;
 			children = (
+				517A34E7232A244600F357A0 /* TodosTableViewController.swift */,
+				5164F24E2330F5DA00D24A7C /* TodoCell.swift */,
+				5164F24F2330F5DA00D24A7C /* TodoCell.xib */,
 			);
-			path = TOOLS;
+			path = VIEWS;
 			sourceTree = "<group>";
 		};
 		517A34BE232921E100F357A0 = {
@@ -97,8 +104,8 @@
 		517A34C9232921E100F357A0 /* TodosApp */ = {
 			isa = PBXGroup;
 			children = (
+				511A05E12330E931000BD3ED /* VIEWS */,
 				511A05DE2330B016000BD3ED /* VIEWMODEL */,
-				515064D1232F58370084E81B /* TOOLS */,
 				517A34F0232A3A7000F357A0 /* MODEL */,
 				517A34E6232A240200F357A0 /* CONTROLLER */,
 				517A34E5232A1E5000F357A0 /* API_MANAGER */,
@@ -123,7 +130,6 @@
 		517A34E6232A240200F357A0 /* CONTROLLER */ = {
 			isa = PBXGroup;
 			children = (
-				517A34E7232A244600F357A0 /* TodosTableViewController.swift */,
 			);
 			path = CONTROLLER;
 			sourceTree = "<group>";
@@ -206,6 +212,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5164F2512330F5DA00D24A7C /* TodoCell.xib in Resources */,
 				517A34D8232921E200F357A0 /* LaunchScreen.storyboard in Resources */,
 				517A34D5232921E200F357A0 /* Assets.xcassets in Resources */,
 				517A34D0232921E100F357A0 /* Main.storyboard in Resources */,
@@ -269,6 +276,7 @@
 				517A34D3232921E100F357A0 /* TodosApp.xcdatamodeld in Sources */,
 				517A34EE232A3A3000F357A0 /* Todo+CoreDataClass.swift in Sources */,
 				517A34F2232A49BB00F357A0 /* CoreDataStack.swift in Sources */,
+				5164F2502330F5DA00D24A7C /* TodoCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

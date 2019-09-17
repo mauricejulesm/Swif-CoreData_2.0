@@ -9,8 +9,20 @@
 import UIKit
 import CoreData
 
+struct TodoCellData {
+    var id:Int?
+    var title:String?
+    var status:Bool?
+}
+
 class TodosTableViewController: UITableViewController{
     
+    
+    // cell data
+    var cellData = [TodoCellData]()
+    
+    
+    //view model
     lazy var viewModel = TodoViewModel()
     
     override func viewDidLoad() {
@@ -24,6 +36,10 @@ class TodosTableViewController: UITableViewController{
         self.tableView.addSubview(todoRefreshControl)
         
         self.refreshControl = todoRefreshControl
+        
+        //setup the customcell
+        let nibName = UINib(nibName: "TodoCell", bundle: nil)
+        tableView.register(nibName, forCellReuseIdentifier: "TodoCell")
         
         setupViewModel()
     }
