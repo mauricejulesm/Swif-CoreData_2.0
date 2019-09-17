@@ -10,85 +10,86 @@ import UIKit
 import CoreData
 
 class TodosTableViewController: UITableViewController{
-
+    
+    lazy var viewModel = TodoViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "List All - CoreData"
+        self.title = "LIST TASKS - COREDATA"
         
         // Pull-to-refresh options
         let todoRefreshControl = UIRefreshControl()
         todoRefreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh todos")
-        todoRefreshControl.addTarget(self, action: #selector(updateTableContent), for: .valueChanged)
+        todoRefreshControl.addTarget(self, action: #selector( updateTableContent), for: .valueChanged)
         self.tableView.addSubview(todoRefreshControl)
         
         self.refreshControl = todoRefreshControl
-        //self.tableView.register(TodoCell.self, forCellReuseIdentifier: "Cell2")
         
-        // update the table on load
-       updateTableContent()
+        setupViewModel()
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        if let todo = fetchedhResultController.object(at: indexPath) as? Todo {
-            cell.textLabel?.text = "\(todo.id ). \(todo.title ?? "Title Missing")"
-            cell.detailTextLabel?.text = "Status: \(todo.completed ? "Completed":"Not Completed")"
+        guard let todo = viewModel.itemAtIndex(indexPath) else {
+            return UITableViewCell()
         }
+        
+        cell.textLabel?.text = "\(todo.id ). \(todo.title ?? "Title Missing")"
+        cell.detailTextLabel?.text = "Status: \(todo.completed ? "Completed":"Not Completed")"
         return cell
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let count = fetchedhResultController.sections?.first?.numberOfObjects {
-            return count
-        }
-        return 0
+       return viewModel.numberOfItems
     }
-    
-    
+
     // allow delete option
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        // functionality to delete a row
-        let context = CoreDataStack.sharedInstance.persistentContainer.viewContext
-        let todo = (fetchedhResultController.object(at: indexPath) as? Todo)!
-
-        // check if the user has started the editting mode
+        // functionality to delete a row\
+        
         if editingStyle == .delete {
-            context.delete(todo)
-            tableView.reloadData()
-            
+          let _ =  viewModel.deleteItemAtIndexPath(indexPath)
         }
+    }
+    
+    private func setupViewModel(){
+        viewModel.delegate = self
+        
+        viewModel.didFinishedRequest = {[weak self] in
+            guard let `self` = self else {
+                return
+            }
+            self.refreshControl?.endRefreshing()
+        }
+        
+        viewModel.didFailedRequest = {[weak self] (error) in
+            guard let `self` = self else {return}
+            self.refreshControl?.endRefreshing()
+            self.displayAlert(title: "Error", message: error.localizedDescription)
+        }
+        
+        viewModel.fetchToDos()
     }
     
     // managing the updates in the table
     @objc  func updateTableContent() {
-        do {
-            try self.fetchedhResultController.performFetch()
-            print("COUNT FETCHED FIRST: \(self.fetchedhResultController.sections?[0].numberOfObjects ?? 0)")
-        } catch let error  {
-            print("ERROR: \(error)")
-        }
-        let service = API_manager()
-        service.getDataWith { (result) in
-            
-            switch result {
-            case .Success(let data):
-                self.clearData()
-                self.saveInCoreDataWith(array: data)
-                
-                // stop the refresh after refreshing
-                self.refreshControl?.endRefreshing()
-            case .Error(let message):
-                DispatchQueue.main.async {
-                    self.displayAlert(title: "Error", message: message)
-                }
-            }
-        }
+      viewModel.fetchToDos()
     }
+    
+    
+    // computed property to controll the fetched results from core data
+    lazy var fetchedhResultController: NSFetchedResultsController<NSFetchRequestResult> = {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: String(describing: Todo.self))
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "id", ascending: true)]
+        let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: CoreDataStack.sharedInstance.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+        frc.delegate = self
+        return frc
+    }()
     
     // method to display the alert to the user
     func displayAlert(title:String, message:String, style:UIAlertController.Style = .alert) {
@@ -102,52 +103,8 @@ class TodosTableViewController: UITableViewController{
         self.present(alertController, animated: true, completion: nil)
         
     }
-    // helper method to help creating todos entities
-    private func createTodoEntityFrom(dictionary: [String: AnyObject]) -> NSManagedObject? {
-        let context = CoreDataStack.sharedInstance.persistentContainer.viewContext
-        if let todoEntity = NSEntityDescription.insertNewObject(forEntityName: "Todo", into: context) as? Todo {
-            todoEntity.id = dictionary["id"] as? Int64 ?? 111
-            todoEntity.title = dictionary["title"] as? String
-            todoEntity.completed = dictionary["completed"] as? Bool ?? false
-            return todoEntity
-        }
-        return nil
-    }
     
     
-    //saving todo instance into the coredata
-    private func saveInCoreDataWith(array: [[String: AnyObject]]) {
-        _ = array.map{self.createTodoEntityFrom(dictionary: $0)}
-        do {
-            try CoreDataStack.sharedInstance.persistentContainer.viewContext.save()
-        } catch let error {
-            print(error)
-        }
-    }
-    
-    // computed property to controll the fetched results from core data
-    lazy var fetchedhResultController: NSFetchedResultsController<NSFetchRequestResult> = {
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: String(describing: Todo.self))
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "id", ascending: true)]
-        let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: CoreDataStack.sharedInstance.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
-         frc.delegate = self
-        return frc
-    }()
-    
-    // clearing the previously saved data to avoid duplicates
-    private func clearData() {
-        do {
-            let context = CoreDataStack.sharedInstance.persistentContainer.viewContext
-            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: String(describing: Todo.self))
-            do {
-                let objects  = try context.fetch(fetchRequest) as? [NSManagedObject]
-                _ = objects.map{$0.map{context.delete($0)}}
-                CoreDataStack.sharedInstance.saveContext()
-            } catch let error {
-                print("ERROR DELETING : \(error)")
-            }
-        }
-    }
 }
 
 extension TodosTableViewController: NSFetchedResultsControllerDelegate {
@@ -170,3 +127,20 @@ extension TodosTableViewController: NSFetchedResultsControllerDelegate {
     }
 }
 
+
+
+extension TodosTableViewController: TodoViewModelDelegate {
+    
+    
+    func viewModel(_ viewMOdel: TodoViewModel, ShouldDeleteRowAtIndexpath indexPaths: [IndexPath]) {
+        tableView.deleteRows(at: indexPaths, with: .automatic)
+    }
+    
+    func viewModel(_ viewMOdel: TodoViewModel, ShouldInsertRowAtIndexpath indexPaths: [IndexPath]) {
+        tableView.insertRows(at: indexPaths, with: .automatic)
+    }
+    
+    func viewModel(_ viewModel: TodoViewModel, ShouldBeginUpdate didBeginUpdate: Bool) {
+        didBeginUpdate ? tableView.beginUpdates() : tableView.endUpdates()
+    }
+}

@@ -4,7 +4,7 @@
 target 'TodosApp' do
   use_frameworks!
 
-  # Pods for TodosApp
+# Pods for TodosApp
 pod 'SVProgressHUD'
 pod 'Alamofire'
 
