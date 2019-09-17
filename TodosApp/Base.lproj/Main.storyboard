@@ -17,9 +17,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" placeholder="\" id="a61-r7-J5d">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="U6J-WN-dMs" detailTextLabel="vg4-wF-jLs" rowHeight="124" style="IBUITableViewCellStyleSubtitle" id="4TQ-ke-dww" customClass="TodoCell" customModule="TodosApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="124"/>
+                                <rect key="frame" x="0.0" y="72" width="414" height="124"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4TQ-ke-dww" id="2iD-4u-z27">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="123.5"/>
@@ -49,7 +54,9 @@
                             <outlet property="delegate" destination="q9P-kJ-uGo" id="8Dt-aq-pT5"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="ZaW-Th-40z"/>
+                    <navigationItem key="navigationItem" id="ZaW-Th-40z">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="moX-r4-T2C"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VGL-lb-PJe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
