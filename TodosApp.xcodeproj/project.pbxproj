@@ -21,6 +21,7 @@
 		517A34EE232A3A3000F357A0 /* Todo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517A34EC232A3A3000F357A0 /* Todo+CoreDataClass.swift */; };
 		517A34EF232A3A3000F357A0 /* Todo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517A34ED232A3A3000F357A0 /* Todo+CoreDataProperties.swift */; };
 		517A34F2232A49BB00F357A0 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517A34F1232A49BB00F357A0 /* CoreDataStack.swift */; };
+		D25E204C2332A89100B1B77C /* NewTodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25E204B2332A89100B1B77C /* NewTodoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 		517A34F1232A49BB00F357A0 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		548709E6F15B62FC63D131DE /* Pods_TodosApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TodosApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		57F02CB68ABEE95DD20FBC49 /* Pods-TodosApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodosApp.release.xcconfig"; path = "Target Support Files/Pods-TodosApp/Pods-TodosApp.release.xcconfig"; sourceTree = "<group>"; };
+		D25E204B2332A89100B1B77C /* NewTodoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTodoViewController.swift; sourceTree = "<group>"; };
 		EED608E782338F52C25BFE55 /* Pods-TodosApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodosApp.debug.xcconfig"; path = "Target Support Files/Pods-TodosApp/Pods-TodosApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -79,6 +81,7 @@
 				517A34E7232A244600F357A0 /* TodosTableViewController.swift */,
 				5164F24E2330F5DA00D24A7C /* TodoCell.swift */,
 				5164F24F2330F5DA00D24A7C /* TodoCell.xib */,
+				D25E204B2332A89100B1B77C /* NewTodoViewController.swift */,
 			);
 			path = VIEWS;
 			sourceTree = "<group>";
@@ -271,6 +274,7 @@
 				511A05E02330B040000BD3ED /* TodoViewModel.swift in Sources */,
 				517A34CB232921E100F357A0 /* AppDelegate.swift in Sources */,
 				517A34E0232925E400F357A0 /* API_manager.swift in Sources */,
+				D25E204C2332A89100B1B77C /* NewTodoViewController.swift in Sources */,
 				517A34EF232A3A3000F357A0 /* Todo+CoreDataProperties.swift in Sources */,
 				517A34E8232A244600F357A0 /* TodosTableViewController.swift in Sources */,
 				517A34D3232921E100F357A0 /* TodosApp.xcdatamodeld in Sources */,
@@ -424,7 +428,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Z6VN663KVG;
 				INFOPLIST_FILE = TodosApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -442,7 +448,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Z6VN663KVG;
 				INFOPLIST_FILE = TodosApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

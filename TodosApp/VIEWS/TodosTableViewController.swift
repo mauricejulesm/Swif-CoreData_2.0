@@ -76,7 +76,11 @@ class TodosTableViewController: UITableViewController{
           let _ =  viewModel.deleteItemAtIndexPath(indexPath)
         }
     }
-    
+	@IBAction func openTodoAddView(_ sender: Any) {
+		performSegue(withIdentifier: "NewTodo", sender: self)
+	}
+	
+	
     private func setupViewModel(){
         viewModel.delegate = self
         

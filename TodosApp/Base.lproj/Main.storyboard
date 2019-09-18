@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -17,8 +18,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" placeholder="\" id="a61-r7-J5d">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Search tod by title" id="a61-r7-J5d">
+                            <rect key="frame" x="0.0" y="0.0" width="453" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <textInputTraits key="textInputTraits"/>
                         </searchBar>
@@ -55,12 +56,63 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="ZaW-Th-40z">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="moX-r4-T2C"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="moX-r4-T2C">
+                            <connections>
+                                <action selector="openTodoAddView:" destination="q9P-kJ-uGo" id="UrT-hr-UUJ"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="uuk-9n-5Kc" kind="show" identifier="NewTodo" id="dgW-9g-BUK"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VGL-lb-PJe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1731.8840579710147" y="109.82142857142857"/>
+        </scene>
+        <!--Add New-->
+        <scene sceneID="kkv-Nf-pFd">
+            <objects>
+                <viewController title="Add New" id="uuk-9n-5Kc" customClass="NewTodoViewController" customModule="TodosApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mgs-Jb-uD7">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Enter your new todo below" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iWH-DK-VQH">
+                                <rect key="frame" x="69" y="128" width="276" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter new todo here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b1f-Xj-aA4">
+                                <rect key="frame" x="73" y="199" width="268" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nt7-CV-U0W">
+                                <rect key="frame" x="183" y="252" width="49" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Submit"/>
+                                <connections>
+                                    <action selector="submitTodo:" destination="uuk-9n-5Kc" eventType="touchUpInside" id="LVk-Xz-lF6"/>
+                                    <action selector="submitTodo:" destination="g19-C8-dd1" eventType="touchUpInside" id="j2J-1d-etw"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Nnl-e7-HeO"/>
+                    </view>
+                    <connections>
+                        <outlet property="newTodoField" destination="b1f-Xj-aA4" id="rFR-Gz-KMx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aLm-8x-acJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="g19-C8-dd1" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="2598.5507246376815" y="97.767857142857139"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="1rR-Vh-4by">
@@ -79,6 +131,73 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uTe-Tg-F9y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="821.73913043478262" y="109.82142857142857"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="OGL-Pe-PQm">
+            <objects>
+                <viewController id="vjx-UD-KKd" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="sQN-AK-bjk">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="IuY-HV-vF2">
+                                <rect key="frame" x="147" y="73" width="121" height="28"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="First"/>
+                                    <segment title="Second"/>
+                                </segments>
+                            </segmentedControl>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QyM-ap-krN">
+                                <rect key="frame" x="87" y="151" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <connections>
+                                    <segue destination="AQm-aR-EbW" kind="embed" id="Hqp-ym-NeP"/>
+                                </connections>
+                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AOS-ur-gzD">
+                                <rect key="frame" x="87" y="384" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <connections>
+                                    <segue destination="k65-kj-8uz" kind="embed" id="CxS-U3-DFP"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="zBA-YI-aCh"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mPX-vK-AEA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1942" y="838"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="y5x-jb-Xah">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="j1S-ch-bWu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="AQm-aR-EbW" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dAN-Jr-Itq">
+                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="1658" y="1335"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="PHh-lv-bPD">
+            <objects>
+                <viewController id="k65-kj-8uz" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="B9g-rw-ewg">
+                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5xJ-2A-di5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2196" y="1335"/>
         </scene>
     </scenes>
 </document>
