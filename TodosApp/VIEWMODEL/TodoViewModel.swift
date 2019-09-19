@@ -33,28 +33,28 @@ class TodoViewModel :NSObject {
         return frc
     }()
     
-    // helper method to help creating todos entities
-    static func createTodoEntityFrom(dictionary: [String: AnyObject]) -> NSManagedObject? {
-        let context = CoreDataStack.sharedInstance.persistentContainer.viewContext
-        if let todoEntity = NSEntityDescription.insertNewObject(forEntityName: "Todo", into: context) as? Todo {
-            todoEntity.id = dictionary["id"] as? Int64 ?? 111
-            todoEntity.title = dictionary["title"] as? String
-            todoEntity.completed = dictionary["completed"] as? Bool ?? false
-            return todoEntity
-        }
-        return nil
-    }
-    
-    //saving todo instance into the coredata
-    static func saveInCoreDataWith(array: [[String: AnyObject]]) {
-        _ = array.map{createTodoEntityFrom(dictionary: $0)}
-        do {
-            try CoreDataStack.sharedInstance.persistentContainer.viewContext.save()
-        } catch let error {
-            print(error)
-        }
-    }
-    
+//    // helper method to help creating todos entities
+//    static func createTodoEntityFrom(dictionary: [String: AnyObject]) -> NSManagedObject? {
+//        let context = CoreDataStack.sharedInstance.persistentContainer.viewContext
+//        if let todoEntity = NSEntityDescription.insertNewObject(forEntityName: "Todo", into: context) as? Todo {
+//            todoEntity.id = dictionary["id"] as? Int64 ?? 111
+//            todoEntity.title = dictionary["title"] as? String
+//            todoEntity.completed = dictionary["completed"] as? Bool ?? false
+//            return todoEntity
+//        }
+//        return nil
+//    }
+//	
+//    saving todo instance into the coredata
+//    static func saveInCoreDataWith(array: [[String: AnyObject]]) {
+//        _ = array.map{createTodoEntityFrom(dictionary: $0)}
+//        do {
+//            try CoreDataStack.sharedInstance.persistentContainer.viewContext.save()
+//        } catch let error {
+//            print(error)
+//        }
+//    }
+	
     // clearing the previously saved data to avoid duplicates
     static func clearData() {
         do {
@@ -72,38 +72,38 @@ class TodoViewModel :NSObject {
     
     
     func fetchToDos() {
-        
+
         didStartRequest?()
-        
+
         do {
             try fetchedhResultController.performFetch()
             print("COUNT FETCHED: \(fetchedhResultController.sections?[0].numberOfObjects ?? 0)")
         } catch let error  {
             print("ERROR: \(error)")
         }
-        
-        let service = API_manager()
-        service.getDataWith {[weak self] (result) in
-            guard let `self` = self else {return}
-            switch result {
-            case .Success(let data):
-                TodoViewModel.clearData()
-                TodoViewModel.saveInCoreDataWith(array: data)
-                DispatchQueue.main.async {
-                  self.didFinishedRequest?()
-                }
-                // stop the refresh after refreshing
-                //self.refreshControl?.endRefreshing()
-            case .Error(let message):
-                DispatchQueue.main.async {
-                    self.didFailedRequest?(NSError.init(domain: "com.todos.error", code: 500, userInfo: [NSLocalizedDescriptionKey:message]))
-                    //self.refreshControl?.endRefreshing()
-                    //self.displayAlert(title: "Error", message: message)
-                }
-            }
-        }
+
+//        let service = API_manager()
+//        service.getDataWith {[weak self] (result) in
+//            guard let `self` = self else {return}
+//            switch result {
+//            case .Success(let data):
+//                TodoViewModel.clearData()
+//                TodoViewModel.saveInCoreDataWith(array: data)
+//                DispatchQueue.main.async {
+//                  self.didFinishedRequest?()
+//                }
+//                // stop the refresh after refreshing
+//                //self.refreshControl?.endRefreshing()
+//            case .Error(let message):
+//                DispatchQueue.main.async {
+//                    self.didFailedRequest?(NSError.init(domain: "com.todos.error", code: 500, userInfo: [NSLocalizedDescriptionKey:message]))
+//                    //self.refreshControl?.endRefreshing()
+//                    //self.displayAlert(title: "Error", message: message)
+//                }
+//            }
+//        }
     }
-    
+	
     
     //MARK:- HELPERS
     var numberOfItems: Int {
@@ -134,9 +134,7 @@ class TodoViewModel :NSObject {
 
 extension TodoViewModel: NSFetchedResultsControllerDelegate {
     
-    
-    
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+	func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         switch type {
         case .insert:
             delegate?.viewModel(self, ShouldInsertRowAtIndexpath: [newIndexPath ?? []])

@@ -20,8 +20,10 @@ class TodosTableViewController: UITableViewController{
     
     // cell data
     var cellData = [TodoCellData]()
-    
-    
+	
+	var todoItems:[Todo] = []
+
+	
     //view model
     lazy var viewModel = TodoViewModel()
     
@@ -29,21 +31,28 @@ class TodosTableViewController: UITableViewController{
         super.viewDidLoad()
         self.title = "LIST TASKS - COREDATA"
         
-        // Pull-to-refresh options
-        let todoRefreshControl = UIRefreshControl()
-        todoRefreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh todos")
-        todoRefreshControl.addTarget(self, action: #selector( updateTableContent), for: .valueChanged)
-        self.tableView.addSubview(todoRefreshControl)
-        
-        self.refreshControl = todoRefreshControl
-        
+//        // Pull-to-refresh options
+//        let todoRefreshControl = UIRefreshControl()
+//        todoRefreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh todos")
+//        todoRefreshControl.addTarget(self, action: #selector( updateTableContent), for: .valueChanged)
+//        self.tableView.addSubview(todoRefreshControl)
+//
+//        self.refreshControl = todoRefreshControl
+		
         //setup the customcell
         let nibName = UINib(nibName: "TodoCell", bundle: nil)
         tableView.register(nibName, forCellReuseIdentifier: "TodoCell")
         
         setupViewModel()
     }
-    
+	
+	//alert text field
+	var alertTextField: UITextField!
+	func alertTextField(textField:UITextField) {
+		alertTextField = textField
+		alertTextField.placeholder = "Enter new todo"
+	}
+	
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "TodoCell", for: indexPath) as! TodoCell
@@ -76,11 +85,40 @@ class TodosTableViewController: UITableViewController{
           let _ =  viewModel.deleteItemAtIndexPath(indexPath)
         }
     }
-	@IBAction func openTodoAddView(_ sender: Any) {
-		performSegue(withIdentifier: "NewTodo", sender: self)
+	@IBAction func addTodoBtn(_ sender: UIBarButtonItem) {
+//		performSegue(withIdentifier: "NewTodo", sender: self)
+		
+		let newTodoAlert = UIAlertController(title: "New todo", message: "Add new todo below", preferredStyle: .alert)
+		let alertAction = UIAlertAction(title: "Add", style: .default, handler: self.saveNewTodo)
+		
+		let alertCancelAct = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+		newTodoAlert.addAction(alertAction)
+		newTodoAlert.addAction(alertCancelAct)
+		newTodoAlert.addTextField(configurationHandler: alertTextField)
+		
+		self.present(newTodoAlert, animated: true, completion: nil)
+//		self.present(newTodoAlert, animated: true, completion: nil)
 	}
 	
-	
+	func saveNewTodo(alert:UIAlertAction){
+		// saving new todo
+		
+		let context = CoreDataStack.sharedInstance.persistentContainer.viewContext
+		if let todoEntity = NSEntityDescription.insertNewObject(forEntityName: "Todo", into: context) as? Todo {
+			todoEntity.id = 0
+			todoEntity.title = alertTextField.text
+			todoEntity.completed = false
+			
+			print("created new todo \(alertTextField.text ?? "No title")")
+			
+			do{
+				try context.save()
+			}catch{
+				print("There was an error while saving the new todo")
+			}
+		}
+		tableView.reloadData()
+	}
     private func setupViewModel(){
         viewModel.delegate = self
         

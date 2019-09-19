@@ -32,7 +32,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="todo-image" translatesAutoresizingMaskIntoConstraints="NO" id="Xb1-hD-DBD">
-                        <rect key="frame" x="22" y="11" width="46" height="48.5"/>
+                        <rect key="frame" x="22" y="-33" width="46" height="136.5"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="46" id="Nh7-v2-TXy"/>
                         </constraints>
