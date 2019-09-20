@@ -15,7 +15,7 @@ struct TodoCellData {
     var status:Bool?
 }
 
-class TodosTableViewController: UITableViewController{
+class TodosTableViewController: UITableViewController, UISearchDisplayDelegate, UISearchBarDelegate{
     
     
     // cell data
@@ -24,9 +24,12 @@ class TodosTableViewController: UITableViewController{
     //view model
     lazy var viewModel = TodoViewModel()
     
+    @IBOutlet weak var todoSearchBar: UISearchBar!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "LIST TASKS - COREDATA"
+        todoSearchBar.delegate = self
         
 //        // Pull-to-refresh options
 //        let todoRefreshControl = UIRefreshControl()
@@ -50,6 +53,26 @@ class TodosTableViewController: UITableViewController{
 		alertTextField.placeholder = "Enter new todo"
 	}
 	
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText != "" {
+            var predicate:NSPredicate = NSPredicate()
+            predicate = NSPredicate(format: "title contains[c] '\(searchText)'")
+            
+            let context = CoreDataStack.sharedInstance.persistentContainer.viewContext
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Todo")
+            
+            fetchRequest.predicate = predicate
+            
+            do{
+                 viewModel.todoItems = try context.fetch(fetchRequest) as! [Todo]
+            }catch{
+                print("could not search the todo")
+            }
+            
+        }
+        tableView.reloadData()
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "TodoCell", for: indexPath) as! TodoCell
@@ -83,39 +106,20 @@ class TodosTableViewController: UITableViewController{
         }
     }
 	@IBAction func addTodoBtn(_ sender: UIBarButtonItem) {
-//		performSegue(withIdentifier: "NewTodo", sender: self)
+        performSegue(withIdentifier: "NewTodo", sender: self)
 		
-		let newTodoAlert = UIAlertController(title: "New todo", message: "Add new todo below", preferredStyle: .alert)
-		let alertAction = UIAlertAction(title: "Add", style: .default, handler: self.saveNewTodo)
-		
-		let alertCancelAct = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-		newTodoAlert.addAction(alertAction)
-		newTodoAlert.addAction(alertCancelAct)
-		newTodoAlert.addTextField(configurationHandler: alertTextField)
-		
-		self.present(newTodoAlert, animated: true, completion: nil)
-//		self.present(newTodoAlert, animated: true, completion: nil)
+//        let newTodoAlert = UIAlertController(title: "New todo", message: "Add new todo below", preferredStyle: .alert)
+//        let alertAction = UIAlertAction(title: "Add", style: .default, handler: self.saveNewTodo)
+//
+//        let alertCancelAct = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+//        newTodoAlert.addAction(alertAction)
+//        newTodoAlert.addAction(alertCancelAct)
+//        newTodoAlert.addTextField(configurationHandler: alertTextField)
+//
+//        self.present(newTodoAlert, animated: true, completion: nil)
 	}
 	
-	func saveNewTodo(alert:UIAlertAction){
-		// saving new todo
-		
-		let context = CoreDataStack.sharedInstance.persistentContainer.viewContext
-		if let todoEntity = NSEntityDescription.insertNewObject(forEntityName: "Todo", into: context) as? Todo {
-			todoEntity.id = 0
-			todoEntity.title = alertTextField.text
-			todoEntity.completed = false
-			
-			print("created new todo \(alertTextField.text ?? "No title")")
-			
-			do{
-				try context.save()
-			}catch{
-				print("There was an error while saving the new todo")
-			}
-		}
-		tableView.reloadData()
-	}
+	
     private func setupViewModel(){
         viewModel.delegate = self
         

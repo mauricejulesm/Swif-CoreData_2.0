@@ -20,5 +20,7 @@ extension Todo {
     @NSManaged public var title: String?
     @NSManaged public var id: Int64
     @NSManaged public var completed: Bool
+    @NSManaged public var deadline: String?
+
 
 }

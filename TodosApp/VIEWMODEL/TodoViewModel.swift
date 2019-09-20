@@ -75,8 +75,16 @@ class TodoViewModel :NSObject {
             }
         }
     }
+    // saving new todo from the user
+    func saveNewTodo(newTodo:Todo){
+        // saving new todo
+        
+        
+       
+    }
     
-    func fetchAsArray() {
+    // fetching the todos as an array
+    func fetchAsArray() -> [Todo] {
         let fetchRequest = NSFetchRequest<Todo>(entityName: "Todo")
         let context = CoreDataStack.sharedInstance.persistentContainer.viewContext
         
@@ -88,16 +96,14 @@ class TodoViewModel :NSObject {
                 }else {
                     incompleteTodo.append(item)
                 }
-               
             }
         } catch let error  {
             print("ERROR: \(error)")
         }
-        
         for i in completedTodo {
             print("Completed todos: \(i.title ?? "no title")")
         }
-        
+        return todoItems
     }
     
     func fetchToDos() {
@@ -106,7 +112,6 @@ class TodoViewModel :NSObject {
 
         do {
             try fetchedhResultController.performFetch()
-            fetchAsArray()
             print("COUNT FETCHED: \(fetchedhResultController.sections?[0].numberOfObjects ?? 0)")
         } catch let error  {
             print("ERROR: \(error)")
@@ -137,15 +142,12 @@ class TodoViewModel :NSObject {
     
     //MARK:- HELPERS
     var numberOfItems: Int {
-        if let count = fetchedhResultController.sections?.first?.numberOfObjects {
-            return count
-        }
-        return 0
+        return fetchAsArray().count
     }
     
     
     func itemAtIndex(_ indexPath: IndexPath) -> Todo? {
-        return fetchedhResultController.object(at: indexPath) as? Todo
+        return todoItems[indexPath.row]
     }
     
     
