@@ -21,9 +21,6 @@ class TodosTableViewController: UITableViewController{
     // cell data
     var cellData = [TodoCellData]()
 	
-	var todoItems:[Todo] = []
-
-	
     //view model
     lazy var viewModel = TodoViewModel()
     
@@ -142,16 +139,6 @@ class TodosTableViewController: UITableViewController{
     @objc  func updateTableContent() {
       viewModel.fetchToDos()
     }
-    
-    
-    // computed property to controll the fetched results from core data
-    lazy var fetchedhResultController: NSFetchedResultsController<NSFetchRequestResult> = {
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: String(describing: Todo.self))
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "id", ascending: true)]
-        let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: CoreDataStack.sharedInstance.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
-        frc.delegate = self
-        return frc
-    }()
     
     // method to display the alert to the user
     func displayAlert(title:String, message:String, style:UIAlertController.Style = .alert) {

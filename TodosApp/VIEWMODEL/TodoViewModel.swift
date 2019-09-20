@@ -18,15 +18,21 @@ protocol TodoViewModelDelegate {
 
 class TodoViewModel :NSObject {
 
+    // all items persisted
+    var todoItems:[Todo] = []
+    var completedTodo:[Todo] = []
+    var incompleteTodo:[Todo] = []
+
     var delegate: TodoViewModelDelegate?
     
     var didStartRequest: (() -> ())?
     var didFinishedRequest: (() -> ())?
     var didFailedRequest: ((_ error :NSError) -> ())?
     
+
     // computed property to controll the fetched results from core data
     lazy var fetchedhResultController: NSFetchedResultsController<NSFetchRequestResult> = {
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: String(describing: Todo.self))
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Todo")
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "id", ascending: true)]
         let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: CoreDataStack.sharedInstance.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
         frc.delegate = self
@@ -70,13 +76,37 @@ class TodoViewModel :NSObject {
         }
     }
     
+    func fetchAsArray() {
+        let fetchRequest = NSFetchRequest<Todo>(entityName: "Todo")
+        let context = CoreDataStack.sharedInstance.persistentContainer.viewContext
+        
+        do {
+            try todoItems = context.fetch(fetchRequest) as [Todo]
+            for item in todoItems {
+                if (item.completed == false) {
+                    completedTodo.append(item)
+                }else {
+                    incompleteTodo.append(item)
+                }
+               
+            }
+        } catch let error  {
+            print("ERROR: \(error)")
+        }
+        
+        for i in completedTodo {
+            print("Completed todos: \(i.title ?? "no title")")
+        }
+        
+    }
     
     func fetchToDos() {
-
+        
         didStartRequest?()
 
         do {
             try fetchedhResultController.performFetch()
+            fetchAsArray()
             print("COUNT FETCHED: \(fetchedhResultController.sections?[0].numberOfObjects ?? 0)")
         } catch let error  {
             print("ERROR: \(error)")
