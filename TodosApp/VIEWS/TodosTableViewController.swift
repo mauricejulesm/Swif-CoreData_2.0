@@ -80,7 +80,7 @@ class TodosTableViewController: UITableViewController, UISearchDisplayDelegate, 
             return UITableViewCell()
         }
         
-        cell.commonInit("todo-image", id: todo.id, title: todo.title!)
+        cell.commonInit("todo-image", id: todo.id, title: todo.title!, deadline:todo.deadline!)
 //        cell.textLabel?.text = "\(todo.id ). \(todo.title ?? "Title Missing")"
 //        cell.detailTextLabel?.text = "Status: \(todo.completed ? "Completed":"Not Completed")"
         return cell

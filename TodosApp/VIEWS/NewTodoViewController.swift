@@ -11,11 +11,16 @@ import CoreData
 
 class NewTodoViewController: UIViewController {
 	@IBOutlet weak var newTodoField: UITextField!
-	
+    @IBOutlet weak var dateLabel: UITextField!
+    
+    let datePicker = UIDatePicker()
+
     lazy var viewModel = TodoViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        showDatePicker()
 
         // Do any additional setup after loading the view.
     }
@@ -24,13 +29,14 @@ class NewTodoViewController: UIViewController {
 	
 	@IBAction func submitTodo(_ sender: Any) {
 		if let newTodoTitle = newTodoField.text{
-			if !newTodoTitle.isEmpty{
+            if !newTodoTitle.isEmpty && !dateLabel.text!.isEmpty{
                 let context = CoreDataStack.sharedInstance.persistentContainer.viewContext
                 if let todoEntity = NSEntityDescription.insertNewObject(forEntityName: "Todo", into: context) as? Todo {
                     todoEntity.id = 0
                     todoEntity.title = newTodoTitle
                     todoEntity.completed = false
-                    
+                    todoEntity.deadline = dateLabel.text
+
                     print("created new todo\(newTodoTitle)")
                     
                     do{
@@ -41,13 +47,41 @@ class NewTodoViewController: UIViewController {
                 
 				print("Added new todo: \(newTodoTitle)")
 				newTodoField.text = ""
+                dateLabel.text = ""
 			}
 		}
 	}
     }
 	
-    @IBAction func pickDeadline(_ sender: Any) {
-        print("Just picked a date")
+    
+    func showDatePicker(){
+        //Formate Date
+        datePicker.datePickerMode = .date
+        
+        //ToolBar
+        let toolbar = UIToolbar();
+        toolbar.sizeToFit()
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(donedatePicker));
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelDatePicker));
+        
+        toolbar.setItems([doneButton,spaceButton,cancelButton], animated: false)
+        
+        dateLabel.inputAccessoryView = toolbar
+        dateLabel.inputView = datePicker
+        
+    }
+    
+    @objc func donedatePicker(){
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd/MM/yyyy"
+        dateLabel.text = formatter.string(from: datePicker.date)
+        self.view.endEditing(true)
+    }
+    
+    @objc func cancelDatePicker(){
+        self.view.endEditing(true)
     }
     
 }

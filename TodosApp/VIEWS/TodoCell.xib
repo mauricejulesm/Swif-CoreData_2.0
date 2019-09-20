@@ -72,6 +72,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="deadLineLabel" destination="A1P-XE-GrR" id="Wys-eB-eeG"/>
                 <outlet property="idLabel" destination="HBI-2y-ufI" id="GeY-YJ-ZLZ"/>
                 <outlet property="titleLabel" destination="apn-xE-ZuZ" id="LIN-Br-fAb"/>
                 <outlet property="todoImage" destination="Xb1-hD-DBD" id="Tc2-XM-eul"/>
