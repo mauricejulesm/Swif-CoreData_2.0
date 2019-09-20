@@ -35,7 +35,7 @@ class NewTodoViewController: UIViewController {
                     todoEntity.id = 0
                     todoEntity.title = newTodoTitle
                     todoEntity.completed = false
-                    todoEntity.deadline = dateLabel.text
+                    todoEntity.deadline = "Deadline: " + dateLabel.text!
 
                     print("created new todo\(newTodoTitle)")
                     

@@ -32,16 +32,16 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="U6J-WN-dMs">
-                                            <rect key="frame" x="20" y="33" width="44" height="26.5"/>
+                                            <rect key="frame" x="20" y="35" width="44" height="26.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vg4-wF-jLs">
-                                            <rect key="frame" x="20" y="63.5" width="67" height="24"/>
+                                            <rect key="frame" x="20" y="65.5" width="59" height="20.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -79,45 +79,57 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Enter your new todo below" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iWH-DK-VQH">
-                                <rect key="frame" x="69" y="128" width="276" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Enter your new todo below" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iWH-DK-VQH">
+                                <rect key="frame" x="36" y="99" width="249" height="42"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter new todo here" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b1f-Xj-aA4">
-                                <rect key="frame" x="73" y="199" width="268" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter new todo here" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b1f-Xj-aA4">
+                                <rect key="frame" x="73" y="149" width="174" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nt7-CV-U0W">
-                                <rect key="frame" x="157" y="584" width="66" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Pick your deadline below" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iQU-Bd-J29">
+                                <rect key="frame" x="44" y="200" width="232" height="23"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nt7-CV-U0W">
+                                <rect key="frame" x="127" y="279" width="66" height="30"/>
                                 <state key="normal" title="Add Todo"/>
                                 <connections>
                                     <action selector="submitTodo:" destination="uuk-9n-5Kc" eventType="touchUpInside" id="LVk-Xz-lF6"/>
                                     <action selector="submitTodo:" destination="g19-C8-dd1" eventType="touchUpInside" id="j2J-1d-etw"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Pick your deadline below" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iQU-Bd-J29">
-                                <rect key="frame" x="88" y="262" width="239" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Day/Month/Year" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pki-Eh-YLM">
-                                <rect key="frame" x="96" y="291" width="222" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Day/Month/Year" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pki-Eh-YLM">
+                                <rect key="frame" x="96" y="231" width="128" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="nt7-CV-U0W" firstAttribute="leading" secondItem="Nnl-e7-HeO" secondAttribute="leading" constant="127" id="1c5-eP-urQ"/>
+                            <constraint firstItem="iWH-DK-VQH" firstAttribute="leading" secondItem="Nnl-e7-HeO" secondAttribute="leading" constant="36" id="3WQ-ZH-g7s"/>
+                            <constraint firstItem="b1f-Xj-aA4" firstAttribute="leading" secondItem="Nnl-e7-HeO" secondAttribute="leading" constant="73" id="3uY-zq-dXN"/>
+                            <constraint firstItem="Nnl-e7-HeO" firstAttribute="trailing" secondItem="iWH-DK-VQH" secondAttribute="trailing" constant="35" id="4gF-k7-nka"/>
+                            <constraint firstItem="pki-Eh-YLM" firstAttribute="leading" secondItem="Nnl-e7-HeO" secondAttribute="leading" constant="96" id="A2d-AH-Sh4"/>
+                            <constraint firstItem="iWH-DK-VQH" firstAttribute="top" secondItem="Nnl-e7-HeO" secondAttribute="top" constant="35" id="Bd8-1u-Yo5"/>
+                            <constraint firstItem="nt7-CV-U0W" firstAttribute="top" secondItem="pki-Eh-YLM" secondAttribute="bottom" constant="18" id="EEL-NZ-9hk"/>
+                            <constraint firstItem="Nnl-e7-HeO" firstAttribute="trailing" secondItem="nt7-CV-U0W" secondAttribute="trailing" constant="127" id="HS6-k7-4MU"/>
+                            <constraint firstItem="Nnl-e7-HeO" firstAttribute="trailing" secondItem="pki-Eh-YLM" secondAttribute="trailing" constant="96" id="RaY-en-T8j"/>
+                            <constraint firstItem="Nnl-e7-HeO" firstAttribute="trailing" secondItem="iQU-Bd-J29" secondAttribute="trailing" constant="44" id="UjG-GJ-8gu"/>
+                            <constraint firstItem="iQU-Bd-J29" firstAttribute="top" secondItem="b1f-Xj-aA4" secondAttribute="bottom" constant="21" id="Wzq-ZM-tPw"/>
+                            <constraint firstItem="iQU-Bd-J29" firstAttribute="leading" secondItem="Nnl-e7-HeO" secondAttribute="leading" constant="44" id="bGs-Xj-cxz"/>
+                            <constraint firstItem="pki-Eh-YLM" firstAttribute="top" secondItem="iQU-Bd-J29" secondAttribute="bottom" constant="8" id="nJ3-Yx-fGA"/>
+                            <constraint firstItem="Nnl-e7-HeO" firstAttribute="trailing" secondItem="b1f-Xj-aA4" secondAttribute="trailing" constant="73" id="oQf-H9-tFy"/>
+                            <constraint firstItem="b1f-Xj-aA4" firstAttribute="top" secondItem="iWH-DK-VQH" secondAttribute="bottom" constant="8" id="qzw-AL-gAz"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Nnl-e7-HeO"/>
                     </view>
                     <connections>
@@ -128,7 +140,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aLm-8x-acJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="g19-C8-dd1" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2808.6956521739135" y="63.616071428571423"/>
+            <point key="canvasLocation" x="2806.875" y="63.380281690140848"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="1rR-Vh-4by">
